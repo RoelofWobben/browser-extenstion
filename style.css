@@ -27,12 +27,19 @@ body {
     background: var(--body-background);
     color: var(--neutral900);
     font-size: 16px;
+    margin: 0 auto; 
     
 }
 
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em 0;
+}
 
 header {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     display: flex;
     justify-content: space-between;
@@ -40,4 +47,13 @@ header {
     margin-top:1em;
     padding: 1em;
     border-radius: 8px; 
+}
+
+button {
+    border: none;
+}
+
+.toggle-icon {
+    background-color: var(--neutral0);
+    height: 30px;
 }
