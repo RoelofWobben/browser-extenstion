@@ -31,13 +31,6 @@ body {
 }
 
 
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
 header {
     width: 90%;
     max-width: 1200px;
