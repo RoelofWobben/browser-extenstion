@@ -140,7 +140,7 @@ button {
 .remove-button {
   background-color: var(--background-color);
   color: var(--font-color);
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 0.5em 1em;
   font-size: 16px;
   font-weight: 700;
