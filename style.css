@@ -127,3 +127,9 @@ button {
     flex-direction: row;
     gap: 1em;
 }
+
+.extension-icon {
+    width: 70%;
+    height: auto;
+    border-radius: 8px;
+}
