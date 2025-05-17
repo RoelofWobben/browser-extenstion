@@ -13,7 +13,7 @@
     --neutral800: hsl(226, 25%, 17%);
     --neutral700: hsl(225, 23%, 24%); 
     --neutral600: hsl(226, 11%, 37%);
-    --neutral300: hsl(0, 0%, 78%);
+    --button-border-color: hsl(0, 0%, 78%);
     --neutral200: hsl(217, 61%, 90%);
     --neutral100: hsl(0, 0%, 93%);
     --background-color: hsl(200, 60%, 99%);
@@ -126,10 +126,25 @@ button {
     display: flex;
     flex-direction: row;
     gap: 1em;
+    align-items: self-start;
 }
 
 .extension-icon {
-    width: 70%;
-    height: auto;
-    border-radius: 8px;
+  width: 50px;
+  height: auto;
+  border-radius: 8px;
+  padding-top: 5px;
+}
+
+
+.remove-button {
+  background-color: var(--background-color);
+  color: var(--font-color);
+  border-radius: 8px;
+  padding: 0.5em 1em;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  width:100px;
+  border: 1px solid var(--button-border-color);
 }
