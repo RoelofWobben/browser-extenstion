@@ -78,8 +78,8 @@ header {
 
 .filter-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 1em;
     padding-top:1em;
     padding-bottom: 1em;
@@ -105,18 +105,18 @@ h2 {
 
 .filter-options button {
     border-radius: 8px;
-    padding: 0.5em 1em;
+    padding: 4px 0px;
     font-size: 1rem;
     cursor: pointer;
     margin-left: 0.5em;
     border-radius: 20px;
-    width:90px;
     background-color: var(--background-color);
-    border:none
+    border:none;
+    width: min-content
 }
 
 .filter-options button.active {
-    background-color: var(--red500);
+    background-color: var(--red700);
     color: white;
 }
 
