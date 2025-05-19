@@ -36,7 +36,7 @@ body {
     font-family: 'Noto Sans', sans-serif;
     background: var(--body-background);
     color: var(--font-color);
-    font-size: 16px;
+    font-size: 1rem;
     margin: 0 auto; 
     
 }
@@ -92,7 +92,7 @@ button {
 .filter-options button {
     border-radius: 8px;
     padding: 0.5em 1em;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
     margin-left: 0.5em;
     border-radius: 20px;
@@ -142,7 +142,7 @@ button {
   color: var(--font-color);
   border-radius: 20px;
   padding: 0.5em 1em;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
   width:100px;
