@@ -9,10 +9,10 @@
 
 
 :root {
-    --font-color: hsl(227, 75%, 14%);
+    --heading-font-color: hsl(227, 75%, 14%);
     --neutral800: hsl(226, 25%, 17%);
     --neutral700: hsl(225, 23%, 24%); 
-    --neutral600: hsl(226, 11%, 37%);
+    --font-color: hsl(226, 11%, 37%);
     --button-border-color: hsl(0, 0%, 78%);
     --neutral200: hsl(217, 61%, 90%);
     --neutral100: hsl(0, 0%, 93%);
@@ -48,6 +48,12 @@ main {
     padding: 2em 0;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 header {
     width: 100%;
     max-width: 1200px;
@@ -59,7 +65,7 @@ header {
     border-radius: 8px; 
 }
 
-button {
+.toggle-button {
     border: none;
     height: 50px;
     width: 50px;
@@ -79,10 +85,18 @@ button {
     padding-bottom: 1em;
 }
 
-.filter-container h1 {
+h1 {
     font-weight: 500;
-    color: var(--font-color);
+    color: var(--heading-font-color);
     text-align: center;
+}
+
+h2 {
+    font-weight: 500;
+    color: var(--heading-font-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.2em;
+    font-weight: 700;
 }
 
 .filter-options {
@@ -98,6 +112,7 @@ button {
     border-radius: 20px;
     width:90px;
     background-color: var(--background-color);
+    border:none
 }
 
 .filter-options button.active {
@@ -127,6 +142,7 @@ button {
     flex-direction: row;
     gap: 1em;
     align-items: self-start;
+    margin-bottom: 1em;
 }
 
 .extension-icon {
@@ -143,8 +159,9 @@ button {
   border-radius: 20px;
   padding: 0.5em 1em;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 500;
+  color: var(--heading-font-color);
   cursor: pointer;
-  width:100px;
+  max-width:fit-content;
   border: 1px solid var(--button-border-color);
 }
