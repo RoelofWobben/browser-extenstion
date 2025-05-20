@@ -112,7 +112,7 @@ h2 {
     border-radius: 20px;
     background-color: var(--background-color);
     border:none;
-    width: min-content
+    width: 5rem;
 }
 
 .filter-options button.active {
