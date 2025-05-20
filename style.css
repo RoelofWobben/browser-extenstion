@@ -194,10 +194,10 @@ input:where([type="checkbox"][role="switch"]) {
   width: 2em;
   height: 1em;
   box-sizing: content-box;
-  border: 1px solid;
+  border: 1px solid var(--neutral200);
   border-radius: 1em;
   vertical-align: text-bottom;
-  color: inherit;
+  background: var(--neutral200);
 }
 
 input:where([type="checkbox"][role="switch"])::before {
@@ -210,7 +210,16 @@ input:where([type="checkbox"][role="switch"])::before {
   width: 0.7em;
   height: 0.7em;
   margin: 0 0.15em;
-  border: 1px solid;
+  border: 1px solid var(--neutral200);
   border-radius: 50%;
-  background: currentcolor;
+  background: var(--background-color);
+}
+
+input:where([type="checkbox"][role="switch"]):checked::before {
+  left: 1em;
+}
+
+input:where([type="checkbox"][role="switch"]):checked {
+  background-color: var(--red700);
+  border-color: var(--red700);
 }
