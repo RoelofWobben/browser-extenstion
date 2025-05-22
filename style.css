@@ -10,12 +10,12 @@
 
 :root {
     --heading-font-color: hsl(227, 75%, 14%);
-    --neutral800: hsl(226, 25%, 17%);
-    --neutral700: hsl(225, 23%, 24%); 
+   
     --font-color: hsl(226, 11%, 37%);
     --button-border-color: hsl(0, 0%, 78%);
+    --neutreal100: hsl(0, 0%, 93%);
     --neutral200: hsl(217, 61%, 90%);
-    --neutral100: hsl(0, 0%, 93%);
+    --background-color-icon: hsl(0, 0%, 93%);
     --background-color: hsl(200, 60%, 99%);
 
     --red400: hsl(3, 86%, 64%);
@@ -23,8 +23,17 @@
     --red700: hsl(3, 77%, 44%);
 
     --body-background: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
-    --dark-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
+    
 }
+
+html:has(#theme-toggle:checked) {
+    --body-background: linear-gradient(180deg, #040918 0%, #091540 100%);
+    --heading-font-color: hsl(0, 0%, 93%);
+    --background-color:  hsl(227, 75%, 14%); 
+    --background-color-icon: hsl(225, 23%, 24%); 
+}
+
+
 
 * {
     margin: 0;
@@ -32,12 +41,16 @@
     box-sizing: border-box;
 }
 
+
 body {
     font-family: 'Noto Sans', sans-serif;
     background: var(--body-background);
     color: var(--font-color);
     font-size: 1rem;
-    margin: 0 auto; 
+    margin: 0 auto;
+     display: flex;
+    flex-direction: column;
+    align-items: center; 
     
 }
 
@@ -48,11 +61,6 @@ main {
     padding: 2em 0;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 header {
     width: 100%;
@@ -65,16 +73,56 @@ header {
     border-radius: 8px; 
 }
 
-.toggle-button {
+#theme-toggle {
     border: none;
     height: 50px;
     width: 50px;
     cursor: pointer;
-}
+    appearance: none;
+     background-color: var( --background-color-icon);
+     display: flex;
+    justify-content: center;
+    align-items: center;}
 
-.toggle-icon {
-   height: 30px;
-}
+ #theme-toggle::before {
+    content:"";
+    display: block;  
+    background-image: url('./assets/images/icon-sun.svg');
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-color: var( --background-color-icon);
+   
+ }
+
+ 
+ #theme-toggle::before {
+    content:"";
+    display: block;  
+    background-image: url('./assets/images/icon-moon.svg');
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+
+     
+   
+   
+ }
+
+
+
+#theme-toggle:checked::before {
+    content:"";
+    display: block;  
+    background-image: url('./assets/images/icon-sun.svg');
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    
+   
+ }
+
+
 
 .filter-container {
     display: flex;
