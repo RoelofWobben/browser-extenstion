@@ -1,31 +1,33 @@
 @font-face {
-  font-family: 'Noto Sans';
-  font-style: normal;
-  font-weight: 400 500 700;
-  font-stretch: 100%;
-  font-display: swap;
-  src: url('assets/fonts/NotoSans-VariableFont_wdth\,wght.ttf') format('truetype');
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400 500 700;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url('assets/fonts/NotoSans-VariableFont_wdth\,wght.ttf') format('truetype');
 }
 
 
 :root {
     --heading-font-color: hsl(227, 75%, 14%);
-   
+
     --font-color: hsl(226, 11%, 37%);
     --button-border-color: hsl(0, 0%, 78%);
     --neutreal100: hsl(0, 0%, 93%);
     --neutral200: hsl(217, 61%, 90%);
     --background-color-icon: hsl(0, 0%, 93%);
     --background-color: hsl(200, 60%, 99%);
-    --filter-button-color: hsl(226, 11%, 37%); 
-     --checkbox-point-color: hsl(224, 26%, 16%);
+    --filter-button-color: hsl(226, 11%, 37%);
+    --checkbox-point-color: hsl(224, 26%, 16%);
 
     --red400: hsl(3, 86%, 64%);
     --red500: hsl(3, 71%, 56%);
     --red700: hsl(3, 77%, 44%);
 
     --body-background: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
-    
+
+    --border-radius: 20px;
+
 }
 
 html:has(#theme-toggle:checked) {
@@ -33,10 +35,10 @@ html:has(#theme-toggle:checked) {
     --heading-font-color: hsl(0, 0%, 93%);
     --font-color: hsl(225deg 5.78% 55.2%);
     --button-border-color: hsl(227, 6%, 45%);
-    --background-color : hsl(224, 26%, 16%);
+    --background-color: hsl(224, 26%, 16%);
     --background-color-icon: hsl(225, 23%, 24%);
     --filter-button-color: hsl(0, 0%, 93%);
-    --checkbox-point-color: hsl(0, 0%, 93%); 
+    --checkbox-point-color: hsl(0, 0%, 93%);
 }
 
 
@@ -54,10 +56,10 @@ body {
     color: var(--font-color);
     font-size: 1rem;
     margin: 0 auto;
-     display: flex;
+    display: flex;
     flex-direction: column;
-    align-items: center; 
-    
+    align-items: center;
+
 }
 
 main {
@@ -74,9 +76,9 @@ header {
     display: flex;
     justify-content: space-between;
     background-color: var(--background-color);
-    margin-top:1em;
-    padding: 1em;
-    border-radius: 8px; 
+    margin-top: 1em;
+    padding: 0.5em;
+    border-radius: var(--border-radius);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
@@ -86,48 +88,35 @@ header {
     width: 50px;
     cursor: pointer;
     appearance: none;
-     background-color: var( --background-color-icon);
-     display: flex;
+    background-color: var(--background-color-icon);
+    display: flex;
     justify-content: center;
-    align-items: center;}
+    align-items: center;
+    border-radius: max(0px, var(--border-radius) - 4px)
+}
 
- #theme-toggle::before {
-    content:"";
-    display: block;  
-    background-image: url('./assets/images/icon-sun.svg');
-    width: 50px;
-    height: 50px;
-    background-size: cover;
-    background-color: var( --background-color-icon);
-   
- }
-
- 
- #theme-toggle::before {
-    content:"";
-    display: block;  
+#theme-toggle::before {
+    content: "";
+    display: block;
     background-image: url('./assets/images/icon-moon.svg');
     width: 30px;
     height: 30px;
     background-size: cover;
+    background-color: var(--background-color-icon);
 
-     
-   
-   
- }
-
+}
 
 
 #theme-toggle:checked::before {
-    content:"";
-    display: block;  
+    content: "";
+    display: block;
     background-image: url('./assets/images/icon-sun.svg');
     width: 30px;
     height: 30px;
     background-size: cover;
-    
-   
- }
+
+
+}
 
 
 
@@ -135,14 +124,14 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
     gap: 1em;
-    padding-top:1em;
+    padding-top: 1em;
     padding-bottom: 1em;
 }
 
 h1 {
-    font-weight: 500;
+    font-weight: 700;
     color: var(--heading-font-color);
     text-align: center;
 }
@@ -167,7 +156,7 @@ h2 {
     margin-left: 0.5em;
     border-radius: 20px;
     background-color: var(--background-color);
-    border:none;
+    border: none;
     color: var(--filter-button-color);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
@@ -183,12 +172,12 @@ h2 {
     flex-direction: column;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1em;
-    padding-top: 1em;   
+    padding-top: 1em;
 }
 
 .extension {
     background-color: var(--background-color);
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     padding: 1em;
     display: flex;
     flex-direction: column;
@@ -205,24 +194,24 @@ h2 {
 }
 
 .extension-icon {
-  width: 50px;
-  height: auto;
-  border-radius: 8px;
-  padding-top: 5px;
+    width: 50px;
+    height: auto;
+    border-radius: var(--border-radius);
+    padding-top: 5px;
 }
 
 
 .remove-button {
-  background-color: var(--background-color);
-  color: var(--font-color);
-  border-radius: 20px;
-  padding: 0.5em 1em;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--heading-font-color);
-  cursor: pointer;
-  max-width:fit-content;
-  border: 1px solid var(--button-border-color);
+    background-color: var(--background-color);
+    color: var(--font-color);
+    border-radius: var(--border-radius);
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--heading-font-color);
+    cursor: pointer;
+    max-width: fit-content;
+    border: 1px solid var(--button-border-color);
 }
 
 .status {
@@ -233,40 +222,41 @@ h2 {
 }
 
 input:where([type="checkbox"][role="switch"]) {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  position: relative;
-  font-size: inherit;
-  width: 2em;
-  height: 1em;
-  box-sizing: content-box;
-  border: 1px solid var(--neutral200);
-  border-radius: 1em;
-  vertical-align: text-bottom;
-  background: var(--background-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    font-size: inherit;
+    width: 2em;
+    height: 1em;
+    box-sizing: content-box;
+    border: 1px solid var(--neutral200);
+    border-radius: 1em;
+    vertical-align: text-bottom;
+    background: var(--background-color);
+
 }
 
 input:where([type="checkbox"][role="switch"])::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(0, -50%);
-  box-sizing: border-box;
-  width: 0.7em;
-  height: 0.7em;
-  margin: 0 0.15em;
-  border: 1px solid var(--neutral200);
-  border-radius: 50%;
-  background: var(--checkbox-point-color);
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    box-sizing: border-box;
+    width: 0.7em;
+    height: 0.7em;
+    margin: 0 0.15em;
+    border: 1px solid var(--neutral200);
+    border-radius: 50%;
+    background: var(--checkbox-point-color);
 }
 
 input:where([type="checkbox"][role="switch"]):checked::before {
-  left: 1em;
+    left: 1em;
 }
 
 input:where([type="checkbox"][role="switch"]):checked {
-  background-color: #f75956;
-  border-color:  #f75956;
+    background-color: #f75956;
+    border-color: #f75956;
 }
