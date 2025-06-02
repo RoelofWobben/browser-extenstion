@@ -9,36 +9,48 @@
 
 
 :root {
-    --heading-font-color: hsl(227, 75%, 14%);
 
-    --font-color: hsl(226, 11%, 37%);
-    --button-border-color: hsl(0, 0%, 78%);
-    --neutreal100: hsl(0, 0%, 93%);
-    --neutral200: hsl(217, 61%, 90%);
-    --background-color-icon: hsl(0, 0%, 93%);
-    --background-color: hsl(200, 60%, 99%);
-    --filter-button-color: hsl(226, 11%, 37%);
-    --checkbox-point-color: hsl(224, 26%, 16%);
+     /* given colors */
 
-    --red400: hsl(3, 86%, 64%);
-    --red500: hsl(3, 71%, 56%);
-    --red700: hsl(3, 77%, 44%);
+    --neutral_900: hsl(227, 75%, 14%);
+    --neutral_800: hsl(226, 25%, 17%); 
+    --neutral_700: hsl(225, 23%, 24%);
+    --neutral_600: hsl(226, 11%, 37%);
+    --neutral_300: hsl(0, 0%, 78%);
+    --neutral_200: hsl(217, 61%, 90%);
+    --neutral_100: hsl(0, 0%, 93%);
+    --Neutral_0: hsl(200, 60%, 99%);
+    --red_400: hsl(3, 86%, 64%);
+    --red_500: hsl(3, 71%, 56%);
+    --red_700: hsl(3, 77%, 44%);
 
-    --body-background: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+    --light_gradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+    --dark-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
 
+    /* light theme colors */
+
+    --heading-font-color: var(--neutral_900);
+    --font-color: var(--neutral_600);
+    --button-border-color: var(--neutral_300);
+    --background-color-icon: var(--neutral_100);
+    --background-color: var(--Neutral_0);
+    --filter-button-color: var(--neutral_600);
+    --checkbox-point-color: var(--neutral_900);
+    --body-background: var(--light_gradient);
     --border-radius: 20px;
 
 }
 
 html:has(#theme-toggle:checked) {
-    --body-background: linear-gradient(180deg, #040918 0%, #091540 100%);
-    --heading-font-color: hsl(0, 0%, 93%);
-    --font-color: hsl(225deg 5.78% 55.2%);
-    --button-border-color: hsl(227, 6%, 45%);
-    --background-color: hsl(224, 26%, 16%);
-    --background-color-icon: hsl(225, 23%, 24%);
-    --filter-button-color: hsl(0, 0%, 93%);
-    --checkbox-point-color: hsl(0, 0%, 93%);
+    --body-background: var(--dark-gradient);
+    --heading-font-color: var(--neutral_100);
+    --font-color: var(--neutral_200);
+    --button-border-color:var(--neutral_300);
+    --background-color: var(--neutral_700);
+    --background-color-icon: var(--neutral_700);
+    --border-radius: 20px;
+    --filter-button-color: var(--neutral_200);
+    --checkbox-point-color: var(--neutral_100);
 }
 
 
@@ -161,15 +173,16 @@ h2 {
     cursor: pointer;
     margin-left: 0.5em;
     border-radius: 20px;
+    border: 1px solid var(--neutreal_100);
     background-color: var(--background-color);
-    border: none;
     color: var(--filter-button-color);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 
 .filter-options button.active {
-    background-color: var(--red700);
+    background-color: var(--red_700);
+    border: 1px solid var(--red_800);
     color: white;
 }
 
@@ -236,7 +249,7 @@ input:where([type="checkbox"][role="switch"]) {
     width: 2em;
     height: 1em;
     box-sizing: content-box;
-    border: 1px solid var(--neutral200);
+    border: 1px solid var(--button-border-color);
     border-radius: 1em;
     vertical-align: text-bottom;
     background: var(--background-color);
