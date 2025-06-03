@@ -248,12 +248,13 @@ input:where([type="checkbox"][role="switch"]) {
     appearance: none;
     position: relative;
     font-size: inherit;
-    width: 2em;
-    height: 1em;
+    width: 36px;
+    height: 20px; 
     box-sizing: content-box;
-    border-radius: 1em;
+    border-radius: 16px;
     vertical-align: text-bottom;
     background: var(--neutral_300);
+    margin: 0px 2px; 
 
 }
 
@@ -264,9 +265,8 @@ input:where([type="checkbox"][role="switch"])::before {
     left: 0;
     transform: translate(0, -50%);
     box-sizing: border-box;
-    width: 0.7em;
-    height: 0.7em;
-    margin: 0 0.15em;
+    width: 16px;
+    height: 16px;
     border: 1px solid var(--neutral200);
     border-radius: 50%;
     background: var(--neutral_0);
