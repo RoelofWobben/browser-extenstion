@@ -19,7 +19,7 @@
     --neutral_300: hsl(0, 0%, 78%);
     --neutral_200: hsl(217, 61%, 90%);
     --neutral_100: hsl(0, 0%, 93%);
-    --Neutral_0: hsl(200, 60%, 99%);
+    --neutral_0: hsl(200, 60%, 99%);
     --red_400: hsl(3, 86%, 64%);
     --red_500: hsl(3, 71%, 56%);
     --red_700: hsl(3, 77%, 44%);
@@ -43,7 +43,7 @@
 
 html:has(#theme-toggle:checked) {
     --body-background: var(--dark-gradient);
-    --heading-font-color: var(--neutral_100);
+    --heading-font-color: var(--neutral_0);
     --font-color: var(--neutral_200);
     --button-border-color:var(--neutral_300);
     --background-color: var(--neutral_700);
@@ -98,6 +98,10 @@ header {
     display: grid;
     align-items: center;
 
+}
+
+svg {
+    color: var(--heading-font-color);
 }
 
 #theme-toggle {
