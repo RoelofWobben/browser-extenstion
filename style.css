@@ -38,6 +38,9 @@
     --checkbox-point-color: var(--neutral_0);
     --body-background: var(--light_gradient);
     --border-radius: 20px;
+    --background-color_switch: var(--neutral_300);
+    --border-card-color: var(--neutral_300);
+    --red : var(--red_500);
 
 }
 
@@ -46,11 +49,13 @@ html:has(#theme-toggle:checked) {
     --heading-font-color: var(--neutral_0);
     --font-color: var(--neutral_200);
     --button-border-color:var(--neutral_300);
-    --background-color: var(--neutral_700);
+    --background-color:  #1F2535;
     --background-color-icon: var(--neutral_700);
     --border-radius: 20px;
     --filter-button-color: var(--neutral_200);
     --checkbox-point-color: var(--neutral_0);
+    --background-color_switch: var(--neutral_600);
+    --red:- var(--red_400)
 }
 
 
@@ -183,8 +188,8 @@ h2 {
 
 
 .filter-options button.active {
-    background-color: var(--red_700);
-    border: 1px solid var(--red_800);
+    background-color: var(--red);
+    border: 1px solid var(--red_700);
     color: white;
 }
 
@@ -203,6 +208,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 1em;
+    border: 1px solid var(--border-card-color);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
@@ -253,8 +259,8 @@ input:where([type="checkbox"][role="switch"]) {
     box-sizing: content-box;
     border-radius: 16px;
     vertical-align: text-bottom;
-    background: var(--neutral_300);
-    margin: 0px 2px; 
+    background: var(--background-color_switch);
+  
 
 }
 
@@ -267,9 +273,9 @@ input:where([type="checkbox"][role="switch"])::before {
     box-sizing: border-box;
     width: 16px;
     height: 16px;
-    border: 1px solid var(--neutral200);
     border-radius: 50%;
     background: var(--neutral_0);
+    margin: 0px 2px; 
 }
 
 input:where([type="checkbox"][role="switch"]):checked::before {
@@ -277,6 +283,6 @@ input:where([type="checkbox"][role="switch"]):checked::before {
 }
 
 input:where([type="checkbox"][role="switch"]):checked {
-    background-color: #f75956;
+    background-color: var(--red);
     border-color: #f75956;
 }
