@@ -32,9 +32,10 @@
     --heading-font-color: var(--neutral_900);
     --font-color: var(--neutral_600);
     --button-border-color: var(--neutral_300);
+    --button-font-color: var(--neutral_0);
     --background-color-icon: var(--neutral_100);
     --background-color: var(--neutral_0);
-    --filter-button-color: var(--neutral_600);
+    --filter-button-color: var(--neutral_800);
     --checkbox-point-color: var(--neutral_0);
     --body-background: var(--light_gradient);
     --border-radius: 20px;
@@ -49,13 +50,14 @@ html:has(#theme-toggle:checked) {
     --heading-font-color: var(--neutral_0);
     --font-color: var(--neutral_200);
     --button-border-color:var(--neutral_300);
+    --button-font-color: var(--neutral_900);
     --background-color:  #1F2535;
     --background-color-icon: var(--neutral_700);
     --border-radius: 20px;
     --filter-button-color: var(--neutral_200);
     --checkbox-point-color: var(--neutral_0);
     --background-color_switch: var(--neutral_600);
-    --red:- var(--red_400)
+    --red: var(--red_400);
 }
 
 
@@ -177,10 +179,11 @@ h2 {
     border-radius: 8px;
     padding: 8px 16px;
     font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
     margin-left: 0.5em;
     border-radius: 20px;
-    border: 1px solid var(--neutreal_100);
+    border: 1px solid var(--neutral_300);
     background-color: var(--background-color);
     color: var(--filter-button-color);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
@@ -190,7 +193,7 @@ h2 {
 .filter-options button.active {
     background-color: var(--red);
     border: 1px solid var(--red_700);
-    color: white;
+    color:  var(--button-font-color);
 }
 
 .extensions {
