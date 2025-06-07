@@ -1,30 +1,57 @@
-let darkMode = localStorage.getItem('darkMode'); 
+//@ts-check
 
-const darkModeToggle = document.querySelector('#theme-toggle');
+/**
+ * Handles dark mode toggle functionality.
+ * Saves the user's preference in localStorage and updates the toggle state.
+ * 
+ * Expects the following HTML structure:
+ * <input type="checkbox" id="theme-toggle" />
+ */
 
-console.log(darkModeToggle);
-console.log(darkMode);
+(function () {
+  'use strict';
 
-const enableDarkMode = () => {
-  darkModeToggle.checked = true;
-  localStorage.setItem('darkMode', 'enabled');
-}
+  /** @type {string|null} */
+  let darkMode = localStorage.getItem('darkMode');
 
-const disableDarkMode = () => {
-   darkModeToggle.checked = false;
-   localStorage.setItem('darkMode', null);
-}
+  /** @type {HTMLInputElement|null} */
+  const darkModeToggle = document.querySelector('#theme-toggle');
 
-if (darkMode === 'enabled') {
-  enableDarkMode();
-}
-
-darkModeToggle.addEventListener('change', () => {
-  darkMode = localStorage.getItem('darkMode');
-  if (darkMode !== 'enabled') {
-    enableDarkMode();
-  } else {
-    disableDarkMode();
+  if (!darkModeToggle || !(darkModeToggle instanceof HTMLInputElement)) {
+    console.log("the toggle cannot be found");
+    return
   }
-}); 
 
+  if (darkMode === 'enabled') {
+    enableDarkMode();
+  }
+
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('change', () => {
+      darkMode = localStorage.getItem('darkMode');
+      if (darkMode !== 'enabled') {
+        enableDarkMode();
+      } else {
+        disableDarkMode();
+      }
+    });
+  }
+
+  /**
+   * Enables dark mode and updates localStorage and toggle state.
+   * @returns {void}
+   */
+  function enableDarkMode() {
+    if (darkModeToggle) darkModeToggle.checked = true;
+    localStorage.setItem('darkMode', 'enabled');
+  }
+
+  /**
+   * Disables dark mode and updates localStorage and toggle state.
+   * @returns {void}
+   */
+  function disableDarkMode() {
+    if (darkModeToggle) darkModeToggle.checked = false;
+    localStorage.removeItem('darkMode');
+  }
+})();
