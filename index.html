@@ -43,9 +43,16 @@
     <div class="filter-container">
       <h1>Extensions List</h1>
       <div class="filter-options">
-        <button class="active">All</button>
-        <button>Active</button>
-        <button>Inactive</button>
+        
+        <input type="radio" id="status-all" name="status" value="all" checked>
+        <label for="status-all">All</label>
+        
+        <input type="radio" id="status-active" name="status" value="active">
+        <label for="status-active">Active</label>
+        
+        <input type="radio" id="status-not-active" name="status" value="not_active">
+        <label for="status-not-active">Inactive</label> 
+        
       </div>
     </div>
 
@@ -62,8 +69,7 @@
     </div>
     <div class="status">
       <button class="remove-button">Remove</button>
-      <label for="ms1"></label>
-      <input type="checkbox" role="switch" id="ms1" />
+      <input type="checkbox" role="switch" />
     </div>
   </div>
   </template>
@@ -75,8 +81,9 @@
       
     </div>
     </div>
-    <script src="dark_mode.js"></script>
-    <script src="reading_data.js"></script>
+    
+    <script src="dark_mode.js" defer></script>
+    <script src="reading_data.js" defer></script>
 </body>
 
 </html>

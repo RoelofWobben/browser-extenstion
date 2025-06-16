@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cctype>
+
+enum class TokenType { Number, Operator };
+
+struct Token {
+    TokenType type;
+    double value;      // Used if type == Number
+    char op;           // Used if type == Operator
+};
+
+// Simple tokenizer for "2 + 3 * 4"
+std::vector<Token> tokenize(const std::string& expr) {
+    std::vector<Token> tokens;
+    for (size_t i = 0; i < expr.size(); ++i) {
+        if (std::isspace(expr[i])) continue;
+        if (std::isdigit(expr[i])) {
+            double num = expr[i] - '0';
+            // Handle multi-digit numbers if needed
+            tokens.push_back({TokenType::Number, num, 0});
+        } else if (expr[i] == '+' || expr[i] == '-' || expr[i] == '*' || expr[i] == '/') {
+            tokens.push_back({TokenType::Operator, 0, expr[i]});
+        }
+    }
+    return tokens;
+}
+
+int main() {
+    std::string expr = "2 + 3 * 4";
+    auto tokens = tokenize(expr);
+    for (const auto& t : tokens) {
+        if (t.type == TokenType::Number)
+            std::cout << "Number: " << t.value << "\n";
+        else
+            std::cout << "Operator: " << t.op << "\n";
+    }
+    return 0;
+}
