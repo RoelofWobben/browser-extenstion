@@ -124,8 +124,21 @@
     }
   }
 
+  const enableEventhandlers = () => {
+    // find removeButton 
+    let removeButtons = document.querySelectorAll('.remove-button'); 
+    for (let i = 0; i < 11; i++) {
+        removeButtons[i].addEventListener("click", (e) => {
+           // how to find the div who holds the button who is being pressed?? 
+        });
+      }
+    }
+  
+
   const extensions = await getExtensions();
   displayExtensions(extensions);
+  enableEventhandlers(); 
+
 
 })();
 
