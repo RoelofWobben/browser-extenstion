@@ -159,55 +159,14 @@
     }
   };
 
-  // find the switch 
-
-  const switchElements = document.querySelector("input[type='checkbox'][role='switch']");
-  if (!switchElements) {
-    console.error("No switch elements found in the document.");
-    return;
-  } 
-
-  // Add event listeners to switch elements
-  switchElements.addEventListener('change', (event) => {
-    
-    const target = event.target;
-    if (!(target instanceof HTMLInputElement)) {
-      console.error("Event target is not an HTMLInputElement.");
-      return;
-    }
-
-    const card = target.closest('.extension');
-    if (!card) {
-      console.error("Card element not found for the switch.");
-      return;
-    }
-
-    const id = parseInt(card.getAttribute('data-id'), 10);
-    if (isNaN(id)) {
-      console.error("Invalid ID for the extension card.");
-      return;
-    }
-
-    // Update the extension's isActive status
-    const extensions = JSON.parse(localStorage.getItem('extensionData') || '[]');
-    const extension = extensions.find(ext => ext.id === id);
-    if (extension) {
-      extension.isActive = !target.checked;
-      saveRecords(extensions);
-    } else {
-      console.error("Extension with ID " + id + " not found.");
-    }
-
-
-    
-  });
-  
   const enableEventhandlers = () => {
     // find removeButton 
     let removeButtons = document.querySelectorAll('.remove-button'); 
+    // add Eventlisteners
     for (let i = 0; i < 11; i++) {
         removeButtons[i].addEventListener("click", (e) => {
-           // how to find the div who holds the button who is being pressed?? 
+           // search for data-id 
+           // ???
         });
       }
     }
