@@ -175,7 +175,13 @@ h2 {
     text-align: center;
 }
 
-.filter-options button {
+.filter-options input[type="radio"] {
+    appearance: none;
+}
+
+
+
+.filter-options label {
     border-radius: 8px;
     padding: 8px 16px;
     font-size: 1rem;
@@ -190,10 +196,16 @@ h2 {
 }
 
 
-.filter-options button.active {
+.filter-options input[type="radio"]:checked + label {
     background-color: var(--red);
     border: 1px solid var(--red_700);
     color:  var(--button-font-color);
+}
+
+main:has(#status-active:checked) .extension:has(input[type="checkbox"]:not(:checked)),
+main:has(#status-not-active:checked) .extension:has(input[type="checkbox"]:checked)
+ {
+    display: none; 
 }
 
 .extensions {
