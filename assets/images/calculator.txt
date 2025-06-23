@@ -1,40 +1,24 @@
-#include <iostream>
-#include <vector>
 #include <string>
-#include <cctype>
+using namespace std;
 
-enum class TokenType { Number, Operator };
-
-struct Token {
-    TokenType type;
-    double value;      // Used if type == Number
-    char op;           // Used if type == Operator
+struct bewerking {
+    float number;
+    string op;
 };
 
-// Simple tokenizer for "2 + 3 * 4"
-std::vector<Token> tokenize(const std::string& expr) {
-    std::vector<Token> tokens;
-    for (size_t i = 0; i < expr.size(); ++i) {
-        if (std::isspace(expr[i])) continue;
-        if (std::isdigit(expr[i])) {
-            double num = expr[i] - '0';
-            // Handle multi-digit numbers if needed
-            tokens.push_back({TokenType::Number, num, 0});
-        } else if (expr[i] == '+' || expr[i] == '-' || expr[i] == '*' || expr[i] == '/') {
-            tokens.push_back({TokenType::Operator, 0, expr[i]});
-        }
-    }
-    return tokens;
-}
-
 int main() {
-    std::string expr = "2 + 3 * 4";
-    auto tokens = tokenize(expr);
-    for (const auto& t : tokens) {
-        if (t.type == TokenType::Number)
-            std::cout << "Number: " << t.value << "\n";
-        else
-            std::cout << "Operator: " << t.op << "\n";
+    const int MAX = 10;
+    bewerking lijst[MAX]; // Array of 10 bewerking structs
+    int count = 0;        // Number of elements added
+
+    bewerking b;
+    b.number = 3.14f;
+    b.op = "+";
+
+    if (count < MAX) {
+        lijst[count] = b; // Add b to the array
+        count++;
     }
-    return 0;
+
+    // Add more as needed, always check count < MAX
 }

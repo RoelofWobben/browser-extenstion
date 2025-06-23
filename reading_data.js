@@ -164,10 +164,45 @@
     let removeButtons = document.querySelectorAll('.remove-button'); 
     // add Eventlisteners
     for (let i = 0; i < 11; i++) {
-        removeButtons[i].addEventListener("click", (e) => {
-           // search for data-id 
-           // ???
-        });
+        removeButtons[i].addEventListener("click", async (e) => {
+           
+           const button = e.target;
+           if (!button || !(button instanceof Element)) {
+             console.error("Button is null or not an Element.");
+             return;
+           }
+           const cardElement = button.closest('.extension');
+           if (!cardElement) {
+             console.error("Could not find closest .extension element.");
+             return;
+           }
+           const card_id = cardElement.getAttribute('data-id');
+           if (!card_id) {
+             console.error("data-id attribute not found on .extension element.");
+             return;
+           }
+
+           // read the data from localStorage
+            let extensions = localStorage.getItem("extensionData");
+
+            if (!extensions || extensions === "null") {
+              console.error("No extension data found in localStorage.");
+              return;
+            }
+
+            //filter out the extension with the given id
+            const extensions_array = JSON.parse(extensions);
+            if (Array.isArray(extensions_array)) {
+              
+              const filteredExtensions = extensions_array.filter(extension => extension.id !== parseInt(card_id));
+              // save the new data to localStorage
+              saveRecords(filteredExtensions);
+            } else {
+              console.error("Parsed extensions is not an array.");
+            }
+            const extensions_new = await getExtensions();
+            displayExtensions(extensions_new)
+        })
       }
     }
 
