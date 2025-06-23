@@ -202,10 +202,6 @@
     
   });
   
-
-  // Fetch and display extensions
-  }
-
   const enableEventhandlers = () => {
     // find removeButton 
     let removeButtons = document.querySelectorAll('.remove-button'); 
@@ -215,13 +211,11 @@
         });
       }
     }
-  
 
+  // Fetch and display extensions
   const extensions = await getExtensions();
   displayExtensions(extensions);
   enableEventhandlers(); 
-
-
 
 })();
 
