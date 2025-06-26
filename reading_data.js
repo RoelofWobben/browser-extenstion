@@ -41,20 +41,7 @@
     localStorage.setItem('extensionData', JSON.stringify(extensions)); 
   };
 
-  /**
-   * Adds a unique id to each extension record.
-   * @param {Extension[]} extensions
-   * @returns {Extension[]}
-   */
-  const giveIdToRecords = (extensions) => { 
-    let id = 1;     
-    for (const extension of extensions) { 
-      extension.id = id;
-      ++id; 
-    }
-    return extensions;  
-  };
-
+ 
   /**
    * Gets the list of extensions from localStorage or fetches from data.json.
    * @returns {Promise<Extension[]>}
@@ -66,9 +53,13 @@
       try {
         const response = await fetch('data.json'); // Fetch JSON file
         const json = await response.json(); // Parse JSON
-        const records = giveIdToRecords(Array.isArray(json) ? json : []);
-        saveRecords(records); 
-        extensions = JSON.stringify(records);
+        let id = 1; 
+        const extensions = json.map(extension => {
+          const extensionWithId = {...extension, id: id}; // Add unique id to each extension
+          id++;
+          return extensionWithId;
+        });
+        saveRecords(extensions); // Save to localStorage
       } catch (error) {
         console.error('Error fetching JSON:', error);
         extensions = "";
@@ -95,8 +86,6 @@
       return;
     }
 
-    let id = 0;
-
     for (const extension of data) {
       // Clone the new row and insert it into the table
       const clone = template.content.cloneNode(true);
@@ -111,8 +100,8 @@
         console.error("Card element not found in the template.");
         return;
       }
-      id++;
-      card.setAttribute('data-id', id.toString()); 
+      
+      card.setAttribute('data-id', extension.id.toString()); 
 
       /** @type {HTMLImageElement|null} */
       let image = clone.querySelector("img");
@@ -159,57 +148,115 @@
     }
   };
 
-  const enableEventhandlers = () => {
+  const enableEventhandlersRemoveButtons = () => {
     // find removeButton 
     let removeButtons = document.querySelectorAll('.remove-button'); 
+    
+    
     // add Eventlisteners
-    for (let i = 0; i < 11; i++) {
-        removeButtons[i].addEventListener("click", async (e) => {
-           
-           const button = e.target;
-           if (!button || !(button instanceof Element)) {
-             console.error("Button is null or not an Element.");
-             return;
-           }
-           const cardElement = button.closest('.extension');
-           if (!cardElement) {
-             console.error("Could not find closest .extension element.");
-             return;
-           }
-           const card_id = cardElement.getAttribute('data-id');
-           if (!card_id) {
-             console.error("data-id attribute not found on .extension element.");
-             return;
-           }
+    
+    removeButtons.forEach(element => {   
+      element.addEventListener("click", async (e) => {
+         
+         const button = e.target;
+         if (!button || !(button instanceof Element)) {
+           console.error("Button is null or not an Element.");
+           return;
+         }
+         const cardElement = button.closest('.extension');
+         if (!cardElement) {
+           console.error("Could not find closest .extension element.");
+           return;
+         }
+         const card_id = cardElement.getAttribute('data-id');
+         if (!card_id) {
+           console.error("data-id attribute not found on .extension element.");
+           return;
+         }
 
-           // read the data from localStorage
-            let extensions = localStorage.getItem("extensionData");
+         // read the data from localStorage
+          let extensions = localStorage.getItem("extensionData");
 
-            if (!extensions || extensions === "null") {
-              console.error("No extension data found in localStorage.");
-              return;
-            }
+          if (!extensions || extensions === "null") {
+            console.error("No extension data found in localStorage.");
+            return;
+          }
 
-            //filter out the extension with the given id
-            const extensions_array = JSON.parse(extensions);
-            if (Array.isArray(extensions_array)) {
-              
-              const filteredExtensions = extensions_array.filter(extension => extension.id !== parseInt(card_id));
-              // save the new data to localStorage
-              saveRecords(filteredExtensions);
-            } else {
-              console.error("Parsed extensions is not an array.");
-            }
-            const extensions_new = await getExtensions();
-            displayExtensions(extensions_new)
+          //filter out the extension with the given id
+          const extensions_array = JSON.parse(extensions);
+          if (Array.isArray(extensions_array)) {
+            
+            const filteredExtensions = extensions_array.filter(extension => extension.id !== parseInt(card_id));
+            // save the new data to localStorage
+            saveRecords(filteredExtensions);
+            // remove the card from the DOM
+            document.querySelector(`.extension[data-id='${card_id}']`)?.remove();
+          } else {
+            console.error("Parsed extensions is not an array.");
+          }
+          
+          const extensions_new = await getExtensions();
+          displayExtensions(extensions_new)
+      
         })
-      }
-    }
+    });
+
+  };
+
+  const enableEventhandlersSwitch = () => {
+    // find all switches
+    let switches = document.querySelectorAll('.extension input[type="checkbox"][role="switch"]');
+
+    console.log("Switches:", switches);
+
+    // add Eventlisteners
+    switches.forEach(element => {
+      element.addEventListener("change", async (e) => {
+        const checkbox = e.target;
+        if (!checkbox || !(checkbox instanceof HTMLInputElement)) {
+          console.error("Checkbox is null or not an HTMLInputElement.");
+          return;
+        }
+        const cardElement = checkbox.closest('.extension');
+        if (!cardElement) {
+          console.error("Could not find closest .extension element.");
+          return;
+        }
+        const card_id = cardElement.getAttribute('data-id');
+        if (!card_id) {
+          console.error("data-id attribute not found on .extension element.");
+          return;
+        }
+
+        // read the data from localStorage
+        let extensions = localStorage.getItem("extensionData");
+        if (!extensions || extensions === "null") {
+          console.error("No extension data found in localStorage.");
+          return;
+        }
+
+        // parse the data and update the isActive property
+        const extensions_array = JSON.parse(extensions);
+        if (Array.isArray(extensions_array)) {
+          const extensionToUpdate = extensions_array.find(extension => extension.id === parseInt(card_id));
+          if (extensionToUpdate) {
+            extensionToUpdate.isActive = checkbox.checked; // Update isActive property
+            saveRecords(extensions_array); // Save updated records
+          } else {
+            console.error(`Extension with id ${card_id} not found.`);
+          }
+        } else {
+          console.error("Parsed extensions is not an array.");
+        }
+      });
+    });
+  };
 
   // Fetch and display extensions
   const extensions = await getExtensions();
   displayExtensions(extensions);
-  enableEventhandlers(); 
+  enableEventhandlersRemoveButtons();
+  enableEventhandlersSwitch(); 
 
 })();
 
